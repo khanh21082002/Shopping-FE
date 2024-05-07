@@ -10,9 +10,9 @@ import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 const HomePage = () => {
   return (
     <>
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <BannerComponent />
-        <div className="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <CategoryItemComponent />
           <CategoryItemComponent />
           <CategoryItemComponent />
@@ -36,7 +36,7 @@ const HomePage = () => {
           <NewUpdateComponent />
         </div>
       </div>
-      <div className="mx-auto max-w-7xl text-center my-6">
+      <div className="mx-auto max-w-7xl text-center my-6 px-4 sm:px-6 lg:px-8">
         <ButtonComponent
           textbutton="Xem tất cả tin Món ngon mỗi ngày"
           size={"large"}

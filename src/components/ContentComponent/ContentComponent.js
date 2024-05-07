@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import CartContentProductComponent from "../CartContentProductComponent/CartContentProductComponent";
 
@@ -26,6 +26,23 @@ const ContentComponent = () => {
     },
   ]);
 
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 961) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleClickContent = (id) => {
     const updatedContent = content.map((item) => {
       if (item.id === id) {
@@ -40,7 +57,7 @@ const ContentComponent = () => {
   return (
     <div className="bg-[#f4f5f9]">
       <div className=" mx-auto max-w-7xl m-3">
-        <div className="flex items-center justify-between my-4">
+        <div className={`grid grid-cols-2 items-center justify-between my-4 ${visible ? "" : "grid-cols-1"}`}>
           <div>
             {content
               .filter((item) => item.isSelected)
@@ -50,7 +67,7 @@ const ContentComponent = () => {
                 </span>
               ))}
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 overflow-x-auto">
             {content.map((item, index) => (
               <ButtonComponent
                 key={index}
@@ -66,7 +83,7 @@ const ContentComponent = () => {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 ">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
             <CartContentProductComponent />
             <CartContentProductComponent />
             <CartContentProductComponent />

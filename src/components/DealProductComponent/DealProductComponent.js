@@ -5,9 +5,25 @@ import CartComponent from "../CartProductCompornent/CartComponent";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import  food  from "../../asset/data/index"
+
 import { Navigation } from 'swiper/modules';
 
 const DealProductComponent = () => {
+  
+  const renderSlide = () => {
+
+    return food.food.map((item, index) => {
+      return (
+        <SwiperSlide key={index}>
+          <CartComponent item={item} />
+        </SwiperSlide>
+      );
+    });
+  }
+
+  console.log(food)
+
   return (
     <div className="flex flex-col  rounded-xl bg-[#ff463b] p-4">
       <div className="flex justify-between py-4">
@@ -51,12 +67,7 @@ const DealProductComponent = () => {
             }
           }}
         >
-          <SwiperSlide><CartComponent /></SwiperSlide>
-          <SwiperSlide><CartComponent /></SwiperSlide>
-          <SwiperSlide><CartComponent /></SwiperSlide>
-          <SwiperSlide><CartComponent /></SwiperSlide>
-          <SwiperSlide><CartComponent /></SwiperSlide>
-          <SwiperSlide><CartComponent /></SwiperSlide>
+          {renderSlide()}
         </Swiper>
       </div>
     </div>
