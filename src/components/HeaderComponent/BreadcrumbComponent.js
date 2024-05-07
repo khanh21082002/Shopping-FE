@@ -52,7 +52,7 @@ const BreadcrumbComponent = () => {
   };
 
   return (
-    <div className={` bg-[#f2f2f2] ${visible ? "" : "hidden"}`}>
+    <div className={`bg-[#f2f2f2] ${visible ? "" : "hidden"}`}>
       <Breadcrumb
         className="mx-auto max-w-7xl py-2 text-sm"
         itemRender={itemRender}

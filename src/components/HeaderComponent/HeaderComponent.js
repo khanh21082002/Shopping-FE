@@ -35,7 +35,7 @@ const content = (
 const HeaderComponent = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState(null);
-  const [visible, setVisible] = useState(true); // Thêm state để kiểm soát hiển thị của logo
+  const [visible, setVisible] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -68,10 +68,10 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
       <div className="border-y border-slate-300 ">
         <div className={`grid grid-cols-6 py-3 items-center gap-4 ${visible ? "" : "grid-cols-1"} `}>
-          <div className={`${visible ? "" : "flex-wrap"} col-span-1`}>
+          <div className={`${visible ? "" : " col-span-2 items-center"} col-span-1`}>
             <Link to="/">
               <img
                 className="h-8 w-[180px]"
@@ -80,7 +80,7 @@ const HeaderComponent = () => {
               />
             </Link>
           </div>
-          <div className={`col-span-3 ${visible ? "" : "w-full"}`}>
+          <div className={`col-span-3 ${visible ? "" : "col-span-6"}`}>
             <InputSearchComponent
               size="large"
               bordered={false}
@@ -89,7 +89,7 @@ const HeaderComponent = () => {
             />
           </div>
 
-          <div className={`col-span-2 flex gap-5 justify-between`}>
+          <div className={`col-span-2 flex gap-5 justify-between ${visible ? "" : "hidden"}`}>
             <div className="flex items-center gap-1">
               <PhoneOutlined className="text-[30px] text-primary" />
               <div>
@@ -125,7 +125,7 @@ const HeaderComponent = () => {
             </div>
           </div>
         </div>
-        <div className={`pb-2  ${visible ? "" : "hidden"}`}>
+        <div className={`pb-2 ${visible ? "" : "hidden"} `}>
           <ul className="flex gap-7">
             {routes.map((item, index) => (
               <li
